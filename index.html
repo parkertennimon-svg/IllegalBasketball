@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#0b0d12" />
+    <title>Illegal Basketball</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="view" tabindex="0" aria-label="Game view"></canvas>
+      <div id="menuFx" aria-hidden="true"><i class="sweep"></i></div>
+
+      <!-- In-game HUD -->
+      <div id="hud" hidden>
+        <div id="scorebug">
+          <div class="sb-team t0" id="sbT0"><span class="sb-bar"></span><span class="sb-name" id="n0">HOME</span><span class="sb-score" id="s0">0</span></div>
+          <div class="sb-clock"><div id="clock">2:00</div><div id="period">3V3</div></div>
+          <div class="sb-team t1" id="sbT1"><span class="sb-score" id="s1">0</span><span class="sb-name" id="n1">AWAY</span><span class="sb-bar"></span></div>
+        </div>
+        <div id="feed" aria-live="polite"></div>
+        <button id="netBar" hidden aria-label="Connection and quick chat"><span class="nb-dot"></span><span id="netPing">–</span><span class="nb-chat"><kbd>T</kbd> chat</span></button>
+        <div id="netNotice" hidden role="status" aria-live="assertive"></div>
+        <div id="chatPanel" hidden></div>
+        <div id="crosshair"></div>
+        <div id="meter" hidden><div id="meterZone"></div><div id="meterFill"></div><div id="meterMark"></div></div>
+        <div id="releaseLabel"></div>
+        <div id="banner"><div id="bannerText"></div><div id="bannerSub"></div></div>
+        <div id="callouts"></div>
+
+        <div id="hints">
+          <div class="hints-head"><span>Controls</span><kbd>H</kbd><span class="muted">hide</span></div>
+          <div class="hint-grid">
+            <kbd>WASD</kbd><span>Move</span><kbd>Shift</kbd><span>Sprint</span>
+            <kbd>Hold click</kbd><span>Shoot · release in the green</span><kbd>Space</kbd><span>Jump / contest</span>
+            <kbd>F</kbd><span>Pass / call</span><kbd>Q / E</kbd><span>Dribble moves</span>
+            <kbd>C</kbd><span>Dash</span><kbd>E / click</kbd><span>Steal (on defense)</span><kbd>1</kbd><span>Use item</span><kbd>Esc</kbd><span>Pause</span>
+          </div>
+        </div>
+
+        <div id="playerCard">
+          <div id="pcAvatar"></div>
+          <div class="pc-info">
+            <div id="pcName">ROOKIE</div>
+            <div id="pcSub">Home · #23</div>
+            <div class="stam"><span class="stam-label">Stamina</span><span class="stam-bar"><i id="staminaFill"></i></span></div>
+          </div>
+        </div>
+
+        <div id="abilities">
+          <div class="ab" id="abDash"><div class="ring"></div><span class="ab-ic" id="abDashIcon"></span><span class="ab-name">DASH</span><kbd>C</kbd></div>
+          <div class="ab" id="abMove"><div class="ring"></div><span class="ab-ic" id="abMoveIcon"></span><span class="ab-name" id="abMoveName">MOVE</span><kbd id="abMoveKey">Q/E</kbd></div>
+          <div class="ab" id="abPass"><div class="ring"></div><span class="ab-ic" id="abPassIcon"></span><span class="ab-name" id="abPassName">PASS</span><kbd>F</kbd></div>
+          <div class="ab item empty" id="item"><div class="ring"></div><span class="ab-ic" id="itemIcon"></span><span class="ab-name" id="itemName">NO ITEM</span><kbd>1</kbd></div>
+        </div>
+
+        <div id="touch">
+          <div id="lookZone"></div>
+          <div id="stickZone"><div id="stickBase"><div id="stickKnob"></div></div></div>
+          <button class="tbtn" id="tPause" aria-label="Pause">
+            <svg viewBox="0 0 24 24" width="18" height="18"><rect x="6" y="5" width="4" height="14" rx="1" fill="#fff"/><rect x="14" y="5" width="4" height="14" rx="1" fill="#fff"/></svg>
+          </button>
+          <button class="tbtn" id="tItem" aria-label="Use item"><span class="ticon"></span><span class="tlabel">ITEM</span></button>
+          <button class="tbtn" id="tSteal" aria-label="Steal or dribble move">STEAL</button>
+          <button class="tbtn" id="tPass" aria-label="Pass or call for the ball">PASS</button>
+          <button class="tbtn" id="tDash" aria-label="Dash">DASH</button>
+          <button class="tbtn" id="tJump" aria-label="Jump">JUMP</button>
+          <button class="tbtn" id="tShoot" aria-label="Shoot">SHOOT</button>
+        </div>
+      </div>
+
+      <!-- Menus: rendered by src/ui/UI.js -->
+      <div id="ui"></div>
+      <div id="dialog" hidden></div>
+      <div id="toast" role="status" aria-live="polite"></div>
+      <div id="rotate" hidden><div class="phone"></div><p>Turn your phone sideways to play</p></div>
+      <div id="boot"><div class="boot-logo"><span>ILLEGAL</span><b>BASKETBALL</b></div><div class="boot-bar"><i></i></div></div>
+    </div>
+    <script type="module" src="game.js"></script>
+  </body>
+</html>
